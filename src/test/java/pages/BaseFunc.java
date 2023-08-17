@@ -40,4 +40,8 @@ public class BaseFunc {
     public void click (By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
-}
+
+
+    }
+
+
