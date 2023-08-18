@@ -9,7 +9,7 @@ public class AuthorizationPage {
     private final By PASSWORD = By.name("password");
     private final By LOGIN_BTN = By.id("login-button");
     private final By ERROR_MESSAGE = By.xpath("//h3[@data-test='error']");
-    private final By NEXT_ELEMENT = By.id("shopping_cart_container");
+    private final By SHOPPING_CART = By.id("shopping_cart_container");
 
     private BaseFunc baseFunc;
 
@@ -29,8 +29,8 @@ public class AuthorizationPage {
         baseFunc.click(LOGIN_BTN);
     }
 
-    public boolean login() {
-        return baseFunc.findElement(NEXT_ELEMENT).isDisplayed();
+    public boolean getNextPage() {
+        return baseFunc.findElement(SHOPPING_CART).isDisplayed();
     }
 
     public String getErrorMessage() {
@@ -41,9 +41,5 @@ public class AuthorizationPage {
         } else {
             return "no message";
         }
-
-
     }
-
-
 }

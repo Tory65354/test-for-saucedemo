@@ -31,17 +31,15 @@ public class BaseFunc {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public void type (By locator, String text) {
+    public void type(By locator, String text) {
         WebElement inputField = findElement(locator);
         inputField.clear();
         inputField.sendKeys(text);
     }
 
-    public void click (By locator) {
+    public void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
-
-
-    }
+}
 
 

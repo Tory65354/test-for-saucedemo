@@ -5,7 +5,7 @@ import pages.BaseFunc;
 
 public class SaucedemoTests {
     private final String URL = "www.saucedemo.com/";
-    private final String LOGIN_1 = "standard_user";
+    private final String LOGIN = "standard_user";
     private final String VALIDATE_PASSWORD = "secret_sauce";
     private final String WRONG_PASSWORD = "wrong123";
     private final String MESSAGE = "Epic sadface: Username and password do not match any user in this service";
@@ -17,12 +17,11 @@ public class SaucedemoTests {
         baseFunc.openUrl(URL);
 
         AuthorizationPage authorizationPage = new AuthorizationPage(baseFunc);
-        authorizationPage.fillInLogin(LOGIN_1);
+        authorizationPage.fillInLogin(LOGIN);
         authorizationPage.fillInPassword(VALIDATE_PASSWORD);
         authorizationPage.clickLoginBtn();
 
-        Assertions.assertTrue(authorizationPage.login(), "Authorization failed");
-
+        Assertions.assertTrue(authorizationPage.getNextPage(), "Authorization failed");
     }
 
     @Test
@@ -31,11 +30,10 @@ public class SaucedemoTests {
         baseFunc.openUrl(URL);
 
         AuthorizationPage authorizationPage = new AuthorizationPage(baseFunc);
-        authorizationPage.fillInLogin(LOGIN_1);
+        authorizationPage.fillInLogin(LOGIN);
         authorizationPage.fillInPassword(WRONG_PASSWORD);
         authorizationPage.clickLoginBtn();
 
         Assertions.assertEquals(MESSAGE, authorizationPage.getErrorMessage(), "Missing error message");
-
     }
 }
